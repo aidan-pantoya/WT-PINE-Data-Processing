@@ -3,16 +3,16 @@ import glob
 import numpy as np
 import pandas as pd
 
-def find_operation_type(file_path, target_value):
-    df = pd.read_excel(file_path)
-    operation_column = df.columns[2]  
-    operation_type_column = df.columns[4]  
-    match = df[df[operation_column] == target_value]
+# def find_operation_type(file_path, target_value):  # THIS FUNCTION IS USED TAKING OUT BACKGROUND MEASUREMENTS
+#     df = pd.read_excel(file_path)
+#     operation_column = df.columns[2]  # GOES THROUGH THE THIRD COLUMN, FOR OPID
+#     operation_type_column = df.columns[4]  # GOES THROUGH THE FIFTH COLUMN, FOR TYPE
+#     match = df[df[operation_column] == target_value]
     
-    if not match.empty:
-        return match.iloc[0][operation_type_column]
-    else:
-        return "No match found"
+#     if not match.empty:
+#         return match.iloc[0][operation_type_column]
+#     else:
+#         return "No match found"
 
 def hskptimesync(hkplist):
  
@@ -30,14 +30,15 @@ def hskptimesync(hkplist):
         hkd.to_csv("F:/ExINPNSA/ExINPNSA_WTAMU/2/" + new_title3 + '_L1.txt', header=True, index=False, sep = '\t')
        
         
-logbook = "F:\ExINPNSA\ExINPNSA21\Logbook_ExINPNSA21.xlsx"
+# logbook = "F:/ExINPNSA/ExINPNSA21/Logbook_ExINPNSA21.xlsx" # EDITED VERSION, NEEDS TO BE CREATED
         
-for i in range(1000,1236):
+for i in range(1000,1236): # GOES THROUGH THE RANGE GIVEN FOR OPIDS
     opid = int(i)
     
-    op_type = str(find_operation_type(logbook, opid))
+    # op_type = str(find_operation_type(logbook, opid))
     print(op_type)
     
-    if 'Temp' in op_type or 'Const' in op_type:
-        hkplist = glob.glob('F:/ExINPNSA/ExINPNSA21/L0_Data/housekeeping/df_PINE-3_ExINPNSA21_opid-' + str(opid) + '_instrument.txt')
-        hskptimesync(hkplist)
+    #if 'Temp' in op_type or 'Const' in op_type:
+
+    hkplist = glob.glob('F:/ExINPNSA/ExINPNSA21/L0_Data/housekeeping/df_PINE-3_ExINPNSA21_opid-' + str(opid) + '_instrument.txt')
+    hskptimesync(hkplist)
