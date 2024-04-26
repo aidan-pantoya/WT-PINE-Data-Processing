@@ -134,7 +134,7 @@ def inp_l1(flist, calib, hkp, op, th):
                         'flow expansion': 'flow_expansion', 'end pressure': 'end_pressure',
                         'Unnamed:10': 'Empty_column'}, inplace=True)
 
-    opd.to_csv('F:/ExINPNSA/ExINPNSA_WTAMU/4/' + new_title2 + '_L1.txt',
+    opd.to_csv('F:/ExINPNSA/ExINPNSA_WTAMU/4/' + new_title2 + '_L1.txt', # MAKE NEW FOLDER, AND CHANGE DIRECTORY FOR IT AND FILENAME
                header=True, index=False, sep='\t')
 
     return opd
